@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -143,7 +144,7 @@ fun RoundTheTip(
         .fillMaxWidth()
         .size(48.dp),
         verticalAlignment = Alignment.CenterVertically) {
-            Text(text = stringResource(id = R.string.round_up_tip))
+        Text(text = stringResource(id = R.string.round_up_tip))
         Switch(checked = roundUp,
             onCheckedChange = onRoundUpChanged ,
             modifier = modifier
@@ -176,7 +177,8 @@ fun EditNumberField(value: String,
 
 
 //Calculate the Tip function
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
+@VisibleForTesting
+internal fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
     var tip = tipPercent / 100 * amount
     if (roundUp){
         tip = kotlin.math.ceil(tip)
