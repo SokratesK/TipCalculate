@@ -1,6 +1,6 @@
 package com.example.tipcalculatorsample
 
-import android.icu.text.NumberFormat
+
 import org.junit.Test
 
 import org.junit.Assert.*
